@@ -1,0 +1,20 @@
+
+no_index: 
+  directory: 
+    - inc
+    - t
+generated_by: Module::Install version 0.64
+distribution_type: module
+version: 0.01
+name: Module-Manifest
+author: Adam Kennedy <adamk@cpan.org>
+license: perl
+build_requires: 
+  Test::More: 0.42
+requires: 
+  perl: 5.005
+  Params::Util: 0.10
+  File::Spec: 0.80
+  File::Basename: 0
+  Carp: 0
+abstract: 
