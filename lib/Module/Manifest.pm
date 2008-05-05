@@ -4,7 +4,7 @@ package Module::Manifest;
 
 =head1 NAME
 
-Perl::Manifest - Parse and examine a Perl distribution MANIFEST file
+Module::Manifest - Parse and examine a Perl distribution MANIFEST file
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,7 @@ use Params::Util   '_STRING';
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.01';
+	$VERSION = '0.03';
 }
 
 
@@ -157,7 +157,7 @@ sub files {
 
 This module is stored in an Open Repository at the following address.
 
-L<http://svn.phase-n.com/svn/cpan/trunk/File-HomeDir>
+L<http://svn.ali.as/cpan/trunk/File-HomeDir>
 
 Write access to the repository is made available automatically to any
 published CPAN author, and to most other volunteers on request.
@@ -191,7 +191,7 @@ L<ExtUtils::Manifest>
 
 =head1 COPYRIGHT
 
-Copyright 2006 Adam Kennedy.
+Copyright 2006 - 2008 Adam Kennedy.
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.

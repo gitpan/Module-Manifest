@@ -1,5 +1,5 @@
 NAME
-    Perl::Manifest - Parse and examine a Perl distribution MANIFEST file
+    Module::Manifest - Parse and examine a Perl distribution MANIFEST file
 
 DESCRIPTION
     Module::Manifest is a simple utility module created originally for use
@@ -60,7 +60,7 @@ DESCRIPTION
 SUPPORT
     This module is stored in an Open Repository at the following address.
 
-    <http://svn.phase-n.com/svn/cpan/trunk/File-HomeDir>
+    <http://svn.ali.as/cpan/trunk/File-HomeDir>
 
     Write access to the repository is made available automatically to any
     published CPAN author, and to most other volunteers on request.
@@ -91,7 +91,7 @@ SEE ALSO
     ExtUtils::Manifest
 
 COPYRIGHT
-    Copyright 2006 Adam Kennedy.
+    Copyright 2006 - 2008 Adam Kennedy.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
