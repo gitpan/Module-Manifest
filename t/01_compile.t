@@ -11,7 +11,7 @@ BEGIN {
 use Test::More tests => 2;
 
 # Check their perl version
-ok( $] >= 5.005, "Your perl is new enough" );
+ok($] >= 5.005, 'Your perl is new enough');
 
 # Load the module
-use_ok( 'Module::Manifest' );
+use_ok('Module::Manifest');
