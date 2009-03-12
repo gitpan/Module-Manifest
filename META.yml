@@ -6,6 +6,7 @@ build_requires:
   Cwd: 0
   Test::Exception: 0.27
   Test::More: 0.42
+  Test::Warn: 0.11
 distribution_type: module
 generated_by: 'Module::Install version 0.79'
 license: perl
@@ -26,4 +27,4 @@ requires:
   perl: 5.00503
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.05
+version: 0.06
