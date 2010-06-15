@@ -49,7 +49,9 @@ COMPATIBILITY
     please contact the maintainer.
 
 METHODS
-  Module::Manifest->new( $manifest, $skip )
+  new
+      Module::Manifest->new( $manifest, $skip )
+
     Creates a "Module::Manifest" object, which either parses the files
     referenced by the $manifest (for MANIFEST) and $skip (for
     MANIFEST.SKIP). If no parameters are specified, it creates an empty
@@ -64,7 +66,9 @@ METHODS
     This method will return an appropriate Module::Manifest object or throws
     an exception on error.
 
-  $manifest->open( $type => $filename )
+  open
+      $manifest->open( $type => $filename )
+
     Open and parse the file given by $filename, which may be a relative
     path. The available $type options are either: 'skip' or 'manifest'
 
@@ -76,7 +80,9 @@ METHODS
     This method doesn't return anything, but may throw an exception on
     error.
 
-  $manifest->parse( $type => \@files )
+  parse
+      $manifest->parse( $type => \@files )
+
     Parse "\@files", which is an array reference containing a list of files
     or regular expression masks. The available $type options are either:
     'skip' or 'manifest'
@@ -92,7 +98,9 @@ METHODS
     This method doesn't return anything, but may throw an exception on
     error.
 
-  $manifest->skipped( $filename )
+  skipped
+      $manifest->skipped( $filename )
+
     Check if $filename matches any masks that should be skipped, given the
     regular expressions provided to either the "parse" or "open" methods.
 
@@ -108,8 +116,10 @@ METHODS
     This method returns a boolean true or false value indicating whether the
     file path is skipped according the "skipfile".
 
-  Module::Manifest->normalize( $path, [ $rel ] )
-=head2 $manifest->normalize( $path, [ $rel ] )
+  normalize
+      Module::Manifest->normalize( $path, $rel )
+      $manifest->normalize( $path, $rel )
+
     This method takes a given platform-specific path string and converts it
     to a Unix-style string compatible with the MANIFEST and MANIFEST.SKIP
     specifications.
@@ -130,19 +140,27 @@ METHODS
 
     This returns a normalized version of the given path.
 
-  $manifest->file
+  file
+      $manifest->file
+
     The "file" accessor returns the absolute path of the MANIFEST file that
     was loaded.
 
-  $manifest->skipfile
+  skipfile
+      $manifest->skipfile
+
     The "skipfile" accessor returns the absolute path of the MANIFEST.SKIP
     file that was loaded.
 
-  $manifest->dir
+  dir
+      $manifest->dir
+
     The "dir" accessor returns the path to the directory that contains the
     MANIFEST or skip file, and thus SHOULD be the root of the distribution.
 
-  $manifest->files
+  files
+      $manifest->files
+
     The "files" method returns the (relative, unix-style) list of files
     within the manifest. In scalar context, returns the number of files in
     the manifest.
@@ -186,13 +204,14 @@ SUPPORT
 AUTHOR
     Adam Kennedy <adamk@cpan.org>
 
-    Jonathan Yu <frequency@cpan.org>
+  CONTIRBUTORS
+    Jonathan Yu <jawnsy@cpan.org>
 
 SEE ALSO
     ExtUtils::Manifest
 
 COPYRIGHT
-    Copyright 2006 - 2009 Adam Kennedy, et al.
+    Copyright 2006 - 2010 Adam Kennedy
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

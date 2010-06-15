@@ -67,11 +67,11 @@ use Carp             ();
 use File::Spec       ();
 use File::Spec::Unix ();
 use File::Basename   ();
-use Params::Util     '_STRING';
+use Params::Util     ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.07';
+	$VERSION = '1.08';
 }
 
 # These platforms were copied from File::Spec
@@ -89,7 +89,9 @@ my %platforms = (
 
 =pod
 
-=head2 Module::Manifest->new( $manifest, $skip )
+=head2 new
+
+  Module::Manifest->new( $manifest, $skip )
 
 Creates a C<Module::Manifest> object, which either parses the files
 referenced by the C<$manifest> (for MANIFEST) and C<$skip>
@@ -117,15 +119,17 @@ sub new {
 		skipfile    => $skipfile,
 	}, $class;
 
-	$self->open( skip     => $skipfile ) if _STRING($skipfile);
-	$self->open( manifest => $manifest ) if _STRING($manifest);
+	$self->open( skip     => $skipfile ) if Params::Util::_STRING($skipfile);
+	$self->open( manifest => $manifest ) if Params::Util::_STRING($manifest);
 
 	return $self;
 }
 
 =pod
 
-=head2 $manifest->open( $type => $filename )
+=head2 open
+
+  $manifest->open( $type => $filename )
 
 Open and parse the file given by C<$filename>, which may be a relative path.
 The available C<$type> options are either: 'skip' or 'manifest'
@@ -159,6 +163,7 @@ sub open {
 	unless ( open(MANFILE, $file) ) {
 		Carp::croak('Failed to load ' . $name . ': ' . $!);
 	}
+	# Slurping should be fine since files are relatively small
 	@file = <MANFILE>;
 	unless ( close MANFILE ) {
 		Carp::croak('Failed to close file! This is VERY bad.');
@@ -172,7 +177,9 @@ sub open {
 
 =pod
 
-=head2 $manifest->parse( $type => \@files )
+=head2 parse
+
+  $manifest->parse( $type => \@files )
 
 Parse C<\@files>, which is an array reference containing a list of files or
 regular expression masks. The available C<$type> options are either: 'skip'
@@ -221,7 +228,9 @@ sub parse {
 
 =pod
 
-=head2 $manifest->skipped( $filename )
+=head2 skipped
+
+  $manifest->skipped( $filename )
 
 Check if C<$filename> matches any masks that should be skipped, given the
 regular expressions provided to either the C<parse> or C<open> methods.
@@ -261,8 +270,10 @@ sub skipped {
 
 =pod
 
-=head2 Module::Manifest->normalize( $path, [ $rel ] )
-=head2 $manifest->normalize( $path, [ $rel ] )
+=head2 normalize
+
+  Module::Manifest->normalize( $path, $rel )
+  $manifest->normalize( $path, $rel )
 
 This method takes a given platform-specific path string and converts it
 to a Unix-style string compatible with the MANIFEST and MANIFEST.SKIP
@@ -315,7 +326,9 @@ sub normalize {
 
 =pod
 
-=head2 $manifest->file
+=head2 file
+
+  $manifest->file
 
 The C<file> accessor returns the absolute path of the MANIFEST file that
 was loaded.
@@ -331,7 +344,9 @@ sub file {
 
 =pod
 
-=head2 $manifest->skipfile
+=head2 skipfile
+
+  $manifest->skipfile
 
 The C<skipfile> accessor returns the absolute path of the MANIFEST.SKIP file
 that was loaded.
@@ -347,7 +362,9 @@ sub skipfile {
 
 =pod
 
-=head2 $manifest->dir
+=head2 dir
+
+  $manifest->dir
 
 The C<dir> accessor returns the path to the directory that contains the
 MANIFEST or skip file, and thus SHOULD be the root of the distribution.
@@ -363,7 +380,9 @@ sub dir {
 
 =pod
 
-=head2 $manifest->files
+=head2 files
+
+  $manifest->files
 
 The C<files> method returns the (relative, unix-style) list of files within
 the manifest. In scalar context, returns the number of files in the manifest.
@@ -426,7 +445,9 @@ address above.
 
 Adam Kennedy E<lt>adamk@cpan.orgE<gt>
 
-Jonathan Yu E<lt>frequency@cpan.orgE<gt>
+=head2 CONTIRBUTORS
+
+Jonathan Yu E<lt>jawnsy@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
@@ -434,7 +455,7 @@ L<ExtUtils::Manifest>
 
 =head1 COPYRIGHT
 
-Copyright 2006 - 2009 Adam Kennedy, et al.
+Copyright 2006 - 2010 Adam Kennedy
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
